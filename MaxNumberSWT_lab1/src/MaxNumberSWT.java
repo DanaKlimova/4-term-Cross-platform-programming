@@ -8,7 +8,7 @@ public class MaxNumberSWT {
 		Shell shell = new Shell();
 		shell.setText("Максимальное число");
 		MaxNumberModel theModel = new MaxNumberModel();	
-		MaxNumberVC maxNumberVC = new MaxNumberVC(display, shell, theModel);		
+		MaxNumberVC maxNumberVC = new MaxNumberVC(display, shell, theModel);	
 		
 		shell.open();
 		while (!shell.isDisposed() ) {
