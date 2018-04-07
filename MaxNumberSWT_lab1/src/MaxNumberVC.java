@@ -1,3 +1,6 @@
+/**The class serves to display data in the model.
+ * @author NotePad
+*/
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -29,6 +32,12 @@ public class MaxNumberVC{
 	private Text number3Txt;
 	private Label maxLbl;
 	
+	/**
+	 * Creates a new object with the specified values.
+	 * @param display
+	 * @param shell
+	 * @param theModel
+	 */
 	MaxNumberVC(Display display, Shell shell, MaxNumberModel theModel){	
 		this.theModel = theModel;
 		this.display = display;
@@ -76,10 +85,8 @@ public class MaxNumberVC{
 		gridData = new GridData();
 		gridData.horizontalAlignment = GridData.FILL;
 		gridData.horizontalSpan = 3;
-		//gridData.horizontalIndent = 10;
 
 		gridData.grabExcessHorizontalSpace = true;
-		//gridData.minimumWidth = 1;
 		maxLbl.setLayoutData(gridData);
 		maxLbl.setText("Максимальное ");
 		
@@ -92,6 +99,10 @@ public class MaxNumberVC{
 	
 		findMaxNumberButton.addListener(SWT.Selection, new Listener() {
 			@Override
+			/** The button click handler.
+			* Gets the value of numbers, and, in case of correct input, displays the maximum value.
+			* In case of incorrect entry, a warning message appears.
+			*/
 			public void handleEvent(Event event) {
 				int firstNumber, secondNumber, thirdNumber = 0;
 				 try{						 
@@ -110,28 +121,43 @@ public class MaxNumberVC{
 		
 	}
 	
+	/**Method gets the first number.
+	 * @return Returns first number.
+	 */
 	public int getFirstNumber() {
 		return Integer.parseInt(number1Txt.getText());
 	}
 	
+	/**Method gets the second number.
+	 * @return Returns second number.
+	 */
 	public int getSecondNumber() {
 		return Integer.parseInt(number2Txt.getText());
 	}
 	
+	/**Method gets the third number.
+	 * @return Returns third number.
+	 */
 	public int getThirdNumber() {
 		return Integer.parseInt(number3Txt.getText());
 	}
 	
+	/** Method displays the maximum number.
+	* @param maxNumber
+	*/
+
 	public void setMaxNumber(int maxNumber) {
 		maxLbl.setText("Максимальное " + Integer.toString(maxNumber));
 	}
 	
+	/**Method displays the input warning.  
+	 * @param errorMessage
+	 */
 	void displayErrorMessage(String errorMessage) {
 		MessageBox messageBox = new MessageBox(this.shell, SWT.ICON_WARNING);
 		messageBox.setText("Внимание!");
 		messageBox.setMessage(errorMessage);	 
-		messageBox.open();
-	
+		messageBox.open();	
 	}
 	
 }
